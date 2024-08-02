@@ -9,7 +9,7 @@ export default function Home() {
       <h1 className="font-serif font-bold text-3xl pointer-events-none select-none m-5">
         My Daily Tasks
       </h1>
-      <div>
+      <div className="w-8/12">
         <TodaysTasks>
 
         </TodaysTasks>
