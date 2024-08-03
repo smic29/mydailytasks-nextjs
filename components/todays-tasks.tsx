@@ -40,7 +40,10 @@ export default function TodaysTasks({children = null}) {
             return task
         })
 
-        if (updatedTasks) setTasksToday(updatedTasks)
+        if (updatedTasks) {
+            setTasksToday(updatedTasks)
+            localStorage.setItem("todaysTasks", JSON.stringify(updatedTasks))
+        }
     }
 
     return (
