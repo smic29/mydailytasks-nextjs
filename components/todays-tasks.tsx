@@ -1,11 +1,11 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 import Task from "./task"
 import DeleteButton from "./delete-button"
 
 interface TodaysTasksProps {
-    children?: React.FC
+    children?: React.ReactNode
 }
 
 interface TaskData {
@@ -13,8 +13,9 @@ interface TaskData {
     done?: boolean
 }
 
+export const ActionContext = createContext<((data: any) => void) | undefined>(undefined);
 
-export default function TodaysTasks({children = null}) {
+export default function TodaysTasks({children}: TodaysTasksProps) {
     const [TasksToday, setTasksToday] = useState<TaskData[] | null>(null)
     
     useEffect(() => {
@@ -52,14 +53,27 @@ export default function TodaysTasks({children = null}) {
         
         if (updatedTasks) {
             setTasksToday(updatedTasks)
-            // localStorage.setItem("todaysTasks", JSON.stringify(updatedTasks))
-            // Will uncomment after implementing task Addition
+            localStorage.setItem("todaysTasks", JSON.stringify(updatedTasks))
         }
+    }
+
+    const addTask = (data: TaskData) => {
+        setTasksToday(prevTasks => {
+            if (prevTasks === null) {
+                localStorage.setItem("todaysTasks", JSON.stringify([data]))
+                return [data]
+            }
+
+            localStorage.setItem("todaysTasks", JSON.stringify([data,...prevTasks]))
+            return [data, ...prevTasks]
+        })
     }
 
     return (
         <div className="bg-slate-200 rounded-lg p-5 pe-1 mb-5">
-            {children}
+            <ActionContext.Provider value={addTask}>
+                {children}
+            </ActionContext.Provider>
             {TasksToday ? TasksToday.map((data, index) => {
                 return (
                     <div key={index} className="flex justify-between items-center group">

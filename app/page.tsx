@@ -1,6 +1,7 @@
 
 import RandomDiv from "@/components/main-random-div";
 import TodaysTasks from "@/components/todays-tasks";
+import NewInput from "@/components/new-task";
 
 export default function Home() {
 
@@ -11,7 +12,7 @@ export default function Home() {
       </h1>
       <div className="w-6/12">
         <TodaysTasks>
-
+          <NewInput />
         </TodaysTasks>
         <RandomDiv>
         </RandomDiv>
