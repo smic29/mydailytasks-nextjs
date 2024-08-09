@@ -21,8 +21,8 @@ export default function NewInput() {
 
     return(
         <form className="mb-5 me-3" onSubmit={(e) => handleSubmit(e)}>
-            <div className="flex justify-between">
-                <Input type="text" placeholder="Add a task for today!" className=" w-10/12" onChange={(e) => setNewTask(e.target.value)} value={newTask}/>
+            <div className="flex justify-between bg-slate-700 p-5 rounded-full shadow-md shadow-neutral-500">
+                <Input type="text" placeholder="Add a task for today!" className="ms-3 w-10/12" onChange={(e) => setNewTask(e.target.value)} value={newTask}/>
                 <Button className="me-5">
                     Add
                 </Button>
