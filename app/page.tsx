@@ -13,9 +13,8 @@ export default function Home() {
       <div className="w-6/12">
         <TodaysTasks>
           <NewInput />
+          <RandomDiv />
         </TodaysTasks>
-        <RandomDiv>
-        </RandomDiv>
       </div>
     </main>
   );

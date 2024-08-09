@@ -43,7 +43,7 @@ export default function RandomDiv({children}:RandomDivProps) {
     }, [])
 
     return (
-        <div className="bg-slate-300 rounded-lg font-mono p-3 flex justify-between items-center">
+        <div className="bg-neutral-400 rounded-lg font-mono p-3 flex justify-between items-center">
             { isLoading ? "Searching..." : randomTask}
             <Button className="ms-3" onClick={getRandomTask}>
                 {isLoading ? "Randomizing..." : "Randomize"}

@@ -70,20 +70,22 @@ export default function TodaysTasks({children}: TodaysTasksProps) {
     }
 
     return (
-        <div className="bg-slate-200 rounded-lg p-5 pe-1 mb-5">
+        <div className="bg-transparent rounded-lg p-5 pe-1 mb-5">
             <ActionContext.Provider value={addTask}>
                 {children}
             </ActionContext.Provider>
-            {TasksToday ? TasksToday.map((data, index) => {
-                return (
-                    <div key={index} className="flex justify-between items-center group">
-                        <Task data={data} onClick={handleTaskClick}></Task>
-                        <DeleteButton data={data} onClick={deleteTask}/>
-                    </div>
-                )
-            }) : 
-            "Loading Tasks"
-            }
+            <div className="overflow-y-auto max-h-80 mt-5 p-2">
+                {TasksToday ? TasksToday.map((data, index) => {
+                    return (
+                        <div key={index} className="flex justify-between items-center group">
+                            <Task data={data} onClick={handleTaskClick}></Task>
+                            <DeleteButton data={data} onClick={deleteTask}/>
+                        </div>
+                    )
+                }) : 
+                "Loading Tasks"
+                }
+            </div>
         </div>
     )
 }
