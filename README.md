@@ -4,6 +4,7 @@ A NextJS project that locally stores tasks and lets you add, delete, or mark the
 ## Made with
 - NextJS
 - Tailwind
+- Shadcn-ui
 
 ## Setup
 1. Clone this repository
